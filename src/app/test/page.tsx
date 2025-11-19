@@ -4,24 +4,21 @@ export default async function TestPage() {
     const { data: products, error } = await supabase
         .from("products")
         .select(`
-            product_id,
-            product_name,
-            description,
-            price,
-            category,
-            product_image_url,
-            seller_profiles (
-                display_name,
-                bio
-            ),
-            reviews (
-                rating,
-                comment
-            )
-        `);
-
-    console.log("PRODUCTS:", products);
-
+    product_id,
+    product_name,
+    description,
+    price,
+    category,
+    product_image_url,
+    seller_profiles!inner (
+      display_name,
+      bio
+    ),
+    reviews (
+      rating,
+      comment
+    )
+  `);
 
     if (error) {
         console.error(error);
@@ -30,7 +27,7 @@ export default async function TestPage() {
 
     return (
         <main style={{ padding: "2rem" }}>
-            <h1>Database Test Page</h1>
+            <h1>Products Test Page</h1>
 
             {products?.map((product) => (
                 <div
@@ -43,7 +40,6 @@ export default async function TestPage() {
                     }}
                 >
                     <h2>{product.product_name}</h2>
-
                     <img
                         src={product.product_image_url}
                         alt={product.product_name}
@@ -55,11 +51,11 @@ export default async function TestPage() {
                     <p><strong>Price:</strong> ${product.price}</p>
 
                     <h3>Seller</h3>
-                    <p><strong>Name:</strong> {product.seller_profiles?.display_name}</p>
-                    <p><strong>Bio:</strong> {product.seller_profiles?.bio}</p>
+                    <p><strong>Name:</strong> {product.seller_profiles?.[0]?.display_name}</p>
+                    <p><strong>Bio:</strong> {product.seller_profiles?.[0]?.bio}</p>
 
                     <h3>Reviews</h3>
-                    {product.reviews?.length > 0 ? (
+                    {product.reviews.length > 0 ? (
                         product.reviews.map((review, idx) => (
                             <div key={idx}>
                                 ⭐ {review.rating} — {review.comment}
