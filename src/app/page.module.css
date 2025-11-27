@@ -68,35 +68,46 @@
   padding: 120px 60px;
 }
 
-.intro {
+.cardList {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.card {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1.5rem;
+  color: rgb(255, 232, 213);
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.card:nth-child(3n+1) {
+  background-color: var(--color2-prairie-grass);
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.card:nth-child(3n+2) {
+  background-color: var(--color4-autumn);
+}
+
+.card:nth-child(3n+3) {
+  background-color: var(--color1-moss-green);
+}
+
+/* .card:nth-child(5n+4) {
+  background-color: var(--color4-autumn);
+}
+
+.card:nth-child(5n+5) {
+  background-color: var(--color5-sand);
+} */
+
+.card h2 {
+  margin: 0 auto 1rem auto;
+}
+
+.card p {
+  margin: 1rem auto 0 auto;
 }
 
 .ctas {
