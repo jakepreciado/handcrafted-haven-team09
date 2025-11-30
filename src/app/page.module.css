@@ -21,7 +21,6 @@
   min-height: 100vh;
   align-items: center;
   justify-content: center; */
-  font-family: var(--font-geist-sans);
   /* background-color: var(--background);  */
 }
 
@@ -57,6 +56,18 @@
   color: var(--color6-wheat);
 }
 
+.login {
+  margin: 0 .5rem;
+  font-size: large;
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  background-color: var(--color2-prairie-grass);
+}
+
+.login:hover {
+  background-color: var(--color1-moss-green);
+}
+
 .main {
   display: flex;
   min-height: 100vh;
@@ -65,9 +76,10 @@
   align-items: flex-start;
   justify-content: space-between;
   background-color: var(--color6-wheat);
-  padding: 120px 60px;
+  padding: 20px 60px;
 }
 
+/* Home Styles */
 .cardList {
   display: flex;
   flex-wrap: wrap;
@@ -110,37 +122,32 @@
   margin: 1rem auto 0 auto;
 }
 
-.ctas {
+/* Login Page Styles */
+
+.loginH2 {
+  font-size: xx-large;
+  color: var(--color4-autumn);
+  margin: 0 auto 1rem 2rem;
+}
+
+.loginButton {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  align-content: baseline;
+  padding: .35rem .5rem;
+  margin: 2rem auto;
+  border: none;
+  font-size: larger;
+  border-radius: 5px;
+  background-color: var(--color2-prairie-grass);
+  color: var(--color7-white);
 }
 
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+.loginButton:hover {
+  background-color: var(--color1-moss-green);
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--button-secondary-border);
+.loginArrow {
+  width: 13px;
 }
 
 /* Enable hover only on non-touch devices */
@@ -161,15 +168,6 @@ a.secondary {
     padding: 48px 24px;
   }
 
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
