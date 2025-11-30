@@ -9,6 +9,8 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { useActionState } from 'react';
 import { authenticate } from '../lib/actions';
 import { useSearchParams } from 'next/navigation';
+import styles from "@/app/page.module.css";
+import { ebGaramond, cormorantGaramond } from "@/app/fonts";
 
 export default function LoginForm() {
   const searchParams = useSearchParams();
@@ -21,9 +23,9 @@ export default function LoginForm() {
   return (
     <form action={formAction} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className="mb-3 text-2xl">
+        <h2 className={`${styles.loginH2} ${ebGaramond.className}`}>
           Please log in to continue.
-        </h1>
+        </h2>
         <div className="w-full">
           <div>
             <label
@@ -41,7 +43,7 @@ export default function LoginForm() {
                 placeholder="Enter your email address"
                 required
               />
-              <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 pl-[.15rem]" />
             </div>
           </div>
           <div className="mt-4">
@@ -61,13 +63,13 @@ export default function LoginForm() {
                 required
                 minLength={6}
               />
-              <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900 pl-[.15rem]" />
             </div>
           </div>
         </div>
         <input type="hidden" name="redirectTo" value={callbackUrl} />
-        <button className="mt-4 w-full" aria-disabled={isPending}>
-          Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+        <button className={`${styles.loginButton} ${cormorantGaramond.className}`} aria-disabled={isPending}>
+          Log in <ArrowRightIcon className={styles.loginArrow} />
         </button>
         <div
           className="flex h-8 items-end space-x-1"
