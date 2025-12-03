@@ -19,21 +19,24 @@ export default function Home() {
             imgWidth={250}
             imgHeight={163}
             description="Find many arts of wonder for your home."
-            price="" />
+            category=""
+            buttonWordsPrice="Explore" />
           <Card
             titleAndImgAlt="Pottery"
             imgSrc="/making-pottery.jpg"
             imgWidth={250}
             imgHeight={163}
-            description="Find many arts of wonder for your home."
-            price="" />
+            description="Look for the pottery that is perfect for you."
+            category=""
+            buttonWordsPrice="Explore" />
           <Card
             titleAndImgAlt="Wearables"
             imgSrc="/wearable-jewelry.jpg"
             imgWidth={250}
             imgHeight={163}
-            description="Find many arts of wonder for your home."
-            price="" />
+            description="Want to look more fasionable? This is the place."
+            category=""
+            buttonWordsPrice="Explore" />
         </div>
       </main>
     </div>

@@ -8,7 +8,8 @@ type CardProps = {
     imgWidth: number;
     imgHeight: number;
     description?: string;
-    price?: string | number;
+    category: string;
+    buttonWordsPrice?: string | number;
 };
 
 export default function Card({
@@ -17,7 +18,8 @@ export default function Card({
     imgWidth,
     imgHeight,
     description,
-    price,
+    category,
+    buttonWordsPrice,
 }: CardProps) {
     return (
         <div className={styles.card}>
@@ -29,8 +31,9 @@ export default function Card({
                 height={imgHeight}
                 loading="lazy"
             />
-            <p className={cormorantGaramond.className}>{price}</p>
             <p className={cormorantGaramond.className}>{description}</p>
+            <p className={cormorantGaramond.className}>{category}</p>
+            <button className={cormorantGaramond.className}>{buttonWordsPrice}</button>
         </div>
     )
 }
