@@ -14,27 +14,35 @@ export default function Home() {
         /> */}
         <div className={styles.cardList}>
           <Card
-            titleAndImgAlt="Art"
+            titleAndImgAlt="Collectables"
             imgSrc="/art-gallery-sharpened.jpg"
             imgWidth={250}
             imgHeight={163}
-            description="Find many arts of wonder for your home."
+            description="Find many arts and collectables of wonder."
             category=""
             buttonWordsPrice="Explore" />
           <Card
-            titleAndImgAlt="Pottery"
+            titleAndImgAlt="Home Decor"
             imgSrc="/making-pottery.jpg"
             imgWidth={250}
             imgHeight={163}
-            description="Look for the pottery that is perfect for you."
+            description="Look for the decor that is perfect for your home."
             category=""
             buttonWordsPrice="Explore" />
           <Card
-            titleAndImgAlt="Wearables"
+            titleAndImgAlt="Fashion"
             imgSrc="/wearable-jewelry.jpg"
             imgWidth={250}
             imgHeight={163}
-            description="Want to look more fasionable? This is the place."
+            description="Want to look more fashionable? This is the place."
+            category=""
+            buttonWordsPrice="Explore" />
+          <Card
+            titleAndImgAlt="Stationery"
+            imgSrc="/stationery.jpg"
+            imgWidth={250}
+            imgHeight={163}
+            description="Perfect stationery for both office and home use."
             category=""
             buttonWordsPrice="Explore" />
         </div>
