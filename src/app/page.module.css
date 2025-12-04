@@ -130,6 +130,13 @@
   }
 }
 
+@media screen and (min-width: 976px) and (max-width: 1264px) {
+  .cardList {
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    max-width: 750px;
+  }
+}
+
 .card {
   border: 1px solid black;
   border-radius: 10px;
