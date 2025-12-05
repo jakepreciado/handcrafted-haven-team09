@@ -2,16 +2,30 @@ import Image from "next/image";
 import Card from "../app/component/card"
 import styles from "./page.module.css";
 import Header from "./component/header";
+import mobHeroImage from "../../public/mobile-hero-image.jpg"
+import heroImage from "../../public/tablet-hero-image.jpg"
+import deskHeroImage from "../../public/desktop-hero-image.jpg"
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <Header />
       <main className={styles.main}>
-        {/* <Image 
-        src={}
-        alt=""
-        /> */}
+        <div className={styles.heroImageDiv}>
+          <Image
+            className={styles.mobile}
+            src={mobHeroImage}
+            alt="hero image" />
+          <Image
+            className={styles.tab}
+            src={heroImage}
+            alt="hero image"
+          />
+          <Image
+            className={styles.desktop}
+            src={deskHeroImage}
+            alt="hero image" />
+        </div>
         <div className={styles.cardList}>
           <Card
             titleAndImgAlt="Collectables"
