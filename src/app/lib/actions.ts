@@ -1,22 +1,51 @@
 'use server';
 
 import { signIn } from '../../../auth';
+import { auth } from "../../../auth";
 import { AuthError } from 'next-auth';
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import postgres from 'postgres';
+import { Product } from './definitions';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require', prepare: false });
+
+const ProductFormSchema = z.object({
+  name: z
+    .string()
+    .min(1, { message: "Product name is required" })
+    .max(255, { message: "Name too long" }),
+
+  description: z
+    .string()
+    .min(1, { message: "Description is required" }),
+
+  price: z.coerce
+    .number()
+    .gt(0, { message: "Price must be greater than 0" }),
+
+  category: z
+    .string()
+    .min(1, { message: "Category is required" })
+    .max(255, { message: "Category too long" }),
+
+  product_image_url: z
+    .string()
+    .max(255)
+    .optional(),
+});
 
 export type State = {
-    errors?: {
-        customerId?: string[];
-        amount?: string[];
-        status?: string[];
-    };
-    message?: string | null;
+  errors?: {
+    name?: string[];
+    description?: string[];
+    price?: number[];
+    category?: string[];
+    product_image_url?: string[];
+  };
+  message?: string | null;
 };
 
 export async function authenticate(
@@ -37,4 +66,87 @@ export async function authenticate(
     throw error;
   }
 }
+
+export async function createProduct(formData: FormData): Promise<void> {
+  // Validate form data
+  const validated = ProductFormSchema.safeParse({
+    name: formData.get("name")?.toString(),
+    description: formData.get("description")?.toString(),
+    price: formData.get("price")?.toString(),
+    category: formData.get("category")?.toString(),
+    product_image_url: formData.get("product_image_url")?.toString(),
+  });
+
+  if (!validated.success) {
+    throw new Error("Missing or invalid fields. Failed to create product.");
+  }
+
+  // Get logged-in user
+  const session = await auth();
+  const userId = session?.user?.id;
+  if (!userId) throw new Error("Unauthorized. Must be logged in.");
+
+  const { name, description, price, category, product_image_url } = validated.data;
+
+  try {
+    await sql`
+      INSERT INTO products (user_id, name, description, price, category, product_image_url)
+      VALUES (${userId}, ${name}, ${description}, ${price}, ${category}, ${product_image_url ?? null})
+    `;
+  } catch (err) {
+    console.error(err);
+    throw new Error("Database error: Failed to create product.");
+  }
+
+  // Revalidate and redirect
+  revalidatePath("/seller-dashboard");
+  redirect("/seller-dashboard");
+}
+
+
+export async function deleteProduct(id: string) {
+  try {
+    await sql`DELETE FROM products WHERE product_id = ${id}`;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to delete product data.');
+  }
+  revalidatePath('/seller-dashboard');
+  redirect('/seller-dashboard');
+}
+
+
+export async function updateProduct(formData: FormData, id: string) {
+  try {
+    const name = formData.get('name') as string;
+    const description = formData.get('description') as string;
+    const price = Number(formData.get('price'));
+    const category = formData.get('category') as string;
+    const product_image_url = formData.get('product_image_url') as string;
+
+    await sql`
+      UPDATE products
+      SET name = ${name},
+          description = ${description},
+          price = ${price},
+          category = ${category},
+          product_image_url = ${product_image_url}
+      WHERE id = ${id}
+    `;
+
+    revalidatePath('/seller-dashboard');
+    redirect('/seller-dashboard');
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to update product data.');
+  }
+}
+
+
+
+
+
+
+
 

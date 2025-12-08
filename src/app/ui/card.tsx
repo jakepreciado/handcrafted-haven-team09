@@ -1,4 +1,4 @@
-import { ebGaramond, cormorantGaramond } from "../fonts";
+import { ebGaramond, cormorantGaramond } from "./fonts";
 import Image from "next/image";
 import styles from '../page.module.css'
 
