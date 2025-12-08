@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Card from "../app/component/card"
+import Card from "../app/ui/card";
 import styles from "./page.module.css";
-import Header from "./component/header";
-import mobHeroImage from "../../public/mobile-hero-image.jpg"
-import heroImage from "../../public/tablet-hero-image.jpg"
-import deskHeroImage from "../../public/desktop-hero-image.jpg"
+import Header from "./ui/header";
+import mobHeroImage from "../../public/mobile-hero-image.jpg";
+import heroImage from "../../public/tablet-hero-image.jpg";
+import deskHeroImage from "../../public/desktop-hero-image.jpg";
 
 export default function Home() {
   return (

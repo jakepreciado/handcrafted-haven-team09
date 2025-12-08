@@ -1,6 +1,6 @@
-import LoginForm from '@/app/component/login-form';
+import LoginForm from '@/app/ui/login-form';
 import { Suspense } from 'react';
-import Header from "@/app/component/header";
+import Header from "@/app/ui/header";
 import styles from "@/app/page.module.css"
 import Image from 'next/image';
 import loginHeroImage from "../../../public/handcrafted-login-hero-image.jpg"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ebGaramond, cormorantGaramond } from './fonts';
+import { ebGaramond, cormorantGaramond } from './ui/fonts';
 import "./globals.css";
 
 const geistSans = Geist({

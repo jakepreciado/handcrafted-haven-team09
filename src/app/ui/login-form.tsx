@@ -10,7 +10,7 @@ import { useActionState } from 'react';
 import { authenticate } from '../lib/actions';
 import { useSearchParams } from 'next/navigation';
 import styles from "@/app/page.module.css";
-import { ebGaramond, cormorantGaramond } from "@/app/fonts";
+import { ebGaramond, cormorantGaramond } from "@/app/ui/fonts";
 
 export default function LoginForm() {
   const searchParams = useSearchParams();

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import styles from '@/app/page.module.css';
-import Nav from "@/app/component/nav";
-import { ebGaramond } from "@/app/fonts";
+import Nav from "@/app/ui/nav";
+import { ebGaramond } from "@/app/ui/fonts";
 import Image from "next/image";
 import logo from "../../../public/handmade-basket-transparent-background.png";
 
