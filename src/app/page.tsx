@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Card from "../app/component/card"
+import Card from "../app/ui/card"
 import styles from "./page.module.css";
-import Header from "./component/header";
+import Header from "./ui/header";
 
 export default function Home() {
   return (

@@ -1,23 +1,31 @@
-import { Suspense } from 'react';
-import Header from "@/app/component/header";
-import styles from "@/app/page.module.css"
+import { fetchProducts } from "@/app/lib/data";
+import { Product } from "@/app/lib/definitions";
+import Card from "@/app/ui/card";
+import Header from "@/app/ui/header";
+import styles from "@/app/page.module.css";
 
-export default function ProductsPage() {
-    return (
-        <>
-            <div className={styles.page}>
-                <Header />
-                <main className={styles.main}>
-                    <div className="relative mx-auto flex w-full max-w-[400px] flex-col space-y-2.5 p-4 md:-mt-32">
-                        <div className="flex h-20 w-full items-end rounded-lg bg-blue-500 p-3 md:h-36">
-                            <div className="w-32 text-white md:w-36">
-                            </div>
-                        </div>
-                        <Suspense>
-                        </Suspense>
-                    </div>
-                </main>
-            </div>
-        </>
-    );
+export default async function Page() {
+  const products: Product[] = await fetchProducts();
+
+  return (
+    <div className={styles.page}>
+      <Header />
+      <main className={styles.main}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+          {products.map((product) => (
+            <Card
+              key={product.id}
+              titleAndImgAlt={product.name}
+              imgSrc={product.product_image_url}
+              imgWidth={300}
+              imgHeight={300}
+              description={product.description}
+              category={product.category}
+              buttonWordsPrice={`$${product.price}`}
+            />
+          ))}
+        </div>
+      </main>
+    </div>
+  );
 }
