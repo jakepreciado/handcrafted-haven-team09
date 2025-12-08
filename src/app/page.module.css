@@ -43,13 +43,103 @@
   justify-content: space-between;
 }
 
+/* Hide desktop nav on small screens */
+.desktopNav {
+  display: flex;
+}
+
+.nav {
+  margin-top: 2.5rem;
+  color: var(--color7-white);
+}
+
+.hambutton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--color7-white);
+  cursor: pointer;
+}
+
 @media screen and (max-width: 825px) {
-  .nav {
+  .desktopNav {
     display: none;
+    flex-direction: column;
+  }
+
+  .nav {
+    margin: 10rem 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .login {
+    width: 4rem;
+  }
+
+  .nav .login {
+    padding-left: 0.7rem;
+  }
+
+  .hambutton {
+    display: block;
   }
 }
 
+@media screen and (max-width: 825px) {}
+
+/* Overlay (background dimmer) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background 0.3s ease;
+  z-index: 20;
+}
+
+.overlayOpen {
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 200px;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%);
+  /* hidden off-screen */
+  transition: transform 0.3s ease-in-out;
+  z-index: 30;
+  background-color: var(--color3-coffee);
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+  /* slide in */
+}
+
+/* Close button */
+.closebtn {
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+}
+
+
 @media screen and (max-width: 600px) {
+
   .header {
     padding: 1rem .5rem;
   }
@@ -69,6 +159,7 @@
 }
 
 @media screen and (min-width: 600px) {
+
   .loginH2 {
     font-size: xx-large;
   }
@@ -76,10 +167,6 @@
   .loginButton {
     min-width: 25rem;
   }
-}
-
-.nav {
-  margin-top: 2.5rem;
 }
 
 .a {
@@ -115,6 +202,86 @@
 }
 
 /* Home Styles */
+.heroImageDiv {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto 1rem auto;
+}
+
+.heroImageDiv img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media screen and (min-width: 1151px) {
+  .heroImageDiv .tab {
+    display: none;
+  }
+
+  .heroImageDiv .mobile {
+    display: none;
+  }
+
+  .heroImageDiv .desktop {
+    margin: 0 auto;
+
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .heroImageDiv .desktop {
+    display: none;
+  }
+
+  .heroImageDiv .mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .heroImageDiv .tab {
+    display: none;
+  }
+
+  .heroImageDiv .mobile {
+    display: block;
+    max-height: 500px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.2);
+    transform-origin: center;
+    margin: 1rem 0 2.5rem 0;
+  }
+}
+
+
+.heroImageDiv .tab {
+  width: 100%;
+  height: 510px;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.2);
+  transform-origin: center;
+}
+
+.heroImageDiv {
+  margin: 2.5rem auto;
+}
+
+@media screen and (max-width: 600px) {
+  .heroImageDiv {
+    margin: .9rem 0 2.5rem 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .heroImageDiv {
+    margin: 0;
+  }
+}
+
 .cardList {
   display: grid;
   grid-gap: .15rem .5rem;
@@ -130,7 +297,7 @@
   }
 }
 
-@media screen and (min-width: 976px) and (max-width: 1264px) {
+@media screen and (min-width: 976px) and (max-width: 1280px) {
   .cardList {
     grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
     max-width: 750px;
@@ -174,7 +341,7 @@
   justify-content: center;
   width: 12rem;
   padding: .25rem;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 5px;
   font-size: larger;
   background-color: var(--color3-coffee);
