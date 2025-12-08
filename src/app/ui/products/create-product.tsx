@@ -3,7 +3,6 @@
 import { createProduct } from "@/app/lib/actions";
 import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
-import styles from "@/app/page.module.css";
 
 export default async function CreateProduct() {
     const session = await auth();

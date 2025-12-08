@@ -2,7 +2,6 @@ import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut, auth } from '../../../auth';
 import { fetchProductsByUser } from '@/app/lib/data';
 import { CreateProduct, DeleteProduct, UpdateProduct } from '@/app/ui/products/buttons';
-import styles from "@/app/page.module.css"
 
 export default async function Page() {
   // Get the logged-in user's session

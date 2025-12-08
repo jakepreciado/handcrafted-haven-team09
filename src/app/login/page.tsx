@@ -1,6 +1,5 @@
 import LoginForm from '@/app/ui/login-form';
 import { Suspense } from 'react';
-import styles from "@/app/page.module.css"
 import Image from 'next/image';
 import loginHeroImage from "../../../public/handcrafted-login-hero-image.jpg"
 
