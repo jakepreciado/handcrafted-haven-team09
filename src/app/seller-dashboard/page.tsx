@@ -33,9 +33,7 @@ export default async function Page() {
               <PowerIcon />
               <div className="md:block">Sign Out</div>
             </button>
-            <button>
-              <CreateProduct />
-            </button>
+            <CreateProduct />
           </form>
         </div>
 

@@ -51,9 +51,11 @@ label {
   margin: 1rem 0 .25rem 0;
 }
 
-input {
+input,
+textarea {
   border-radius: 3px;
-  padding-left: 1.3rem;
+  padding: .5rem;
+  border: 1px solid black;
 }
 
 * {

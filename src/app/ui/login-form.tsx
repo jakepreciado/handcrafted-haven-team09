@@ -36,7 +36,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-[3px] border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 pl-[1.3rem]"
                 id="email"
                 type="email"
                 name="email"
@@ -55,7 +55,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
-                className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full rounded-[3px] border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 pl-[1.3rem]"
                 id="password"
                 type="password"
                 name="password"
@@ -72,7 +72,7 @@ export default function LoginForm() {
           Log in <ArrowRightIcon className={styles.loginArrow} />
         </button>
         <div
-          className="flex h-8 items-end space-x-1"
+          className={`flex h-8 items-end space-x-1 ${styles.errMessage}`}
           aria-live="polite"
           aria-atomic="true"
         >
