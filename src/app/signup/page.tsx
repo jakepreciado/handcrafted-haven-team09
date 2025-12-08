@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import bcrypt from 'bcryptjs';
-import Header from "@/app/ui/header";
-import styles from "@/app/page.module.css";
 
 export default function SignUpForm() {
     const [email, setEmail] = useState('');
@@ -37,32 +35,29 @@ export default function SignUpForm() {
     }
 
     return (
-        <div className={styles.page}>
-            <Header />
-            <main className={styles.main}>
-                <form onSubmit={handleSubmit} className="space-y-3">
-                    <h1 className="mb-3 text-2xl">Sign Up</h1>
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        required
-                        className="block w-full rounded-md border py-2 px-3 mb-2"
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                        required
-                        minLength={6}
-                        className="block w-full rounded-md border py-2 px-3 mb-2"
-                    />
-                    <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md">Sign Up</button>
-                    {message && <p className="text-red-500 mt-2">{message}</p>}
-                </form>
-            </main>
-        </div>
+        <>
+            <form onSubmit={handleSubmit} className="space-y-3">
+                <h1 className="mb-3 text-2xl">Sign Up</h1>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    required
+                    className="block w-full rounded-md border py-2 px-3 mb-2"
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                    minLength={6}
+                    className="block w-full rounded-md border py-2 px-3 mb-2"
+                />
+                <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-md">Sign Up</button>
+                {message && <p className="text-red-500 mt-2">{message}</p>}
+            </form>
+        </>
     );
 }

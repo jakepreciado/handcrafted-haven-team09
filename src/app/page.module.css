@@ -382,6 +382,17 @@
   margin-left: 1rem;
 }
 
+.errMessage {
+  color: rgb(212, 0, 0);
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.errMessage svg {
+  width: 20px;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
