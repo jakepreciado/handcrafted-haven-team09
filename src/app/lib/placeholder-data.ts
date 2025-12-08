@@ -17,7 +17,7 @@ const products = [
     description: 'Hand-carved wooden bowl.',
     price: 25.0,
     category: 'Home Decor',
-    product_image_url: '/images/bowl.png'
+    product_image_url: '../../../public/wooden-bowl.jpg'
   },
   {
     product_id: "be7f8d61-b796-48c4-b870-1a4c762e3801", // Recycled Paper Journal
@@ -26,7 +26,7 @@ const products = [
     description: 'Eco-friendly journal made from recycled paper.',
     price: 15.0,
     category: 'Stationery',
-    product_image_url: '/images/journal.png'
+    product_image_url: '../../../public/journal.jpg'
   },
   {
     product_id: "a5d0e2ac-a13f-4413-b212-9b672c2dc13a", // Ceramic Vase
@@ -35,7 +35,7 @@ const products = [
     description: 'Handmade ceramic vase.',
     price: 40.0,
     category: 'Home Decor',
-    product_image_url: '/images/vase.png'
+    product_image_url: '../../../public/ceramic-vase.jpg'
   },
   {
     product_id: "89691d2c-a8f0-4ad4-a4f2-67f3c1335254", // Vintage Clock
@@ -44,7 +44,7 @@ const products = [
     description: 'Retro-style vintage clock.',
     price: 60.0,
     category: 'Collectibles',
-    product_image_url: '/images/clock.png'
+    product_image_url: '../../../public/vintage-clock.jpg'
   },
   {
     product_id: "ce1b5693-9df7-4ed0-ae67-172c2cfa7747", // Knitted Scarf
@@ -53,7 +53,7 @@ const products = [
     description: 'Warm, hand-knitted scarf.',
     price: 30.0,
     category: 'Fashion',
-    product_image_url: '/images/scarf.png'
+    product_image_url: '../../../public/knitted-scarf.jpg'
   }
 ];
 
