@@ -7,7 +7,6 @@ import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import postgres from 'postgres';
-import { Product } from './definitions';
 
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require', prepare: false });
@@ -106,17 +105,16 @@ export async function createProduct(formData: FormData): Promise<void> {
 
 export async function deleteProduct(id: string) {
   try {
-    await sql`DELETE FROM products WHERE product_id = ${id}`;
+    await sql`DELETE FROM products WHERE id = ${id}`;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to delete product data.');
   }
   revalidatePath('/seller-dashboard');
-  redirect('/seller-dashboard');
 }
 
 
-export async function updateProduct(formData: FormData, id: string) {
+export async function updateProduct(id: string, formData: FormData,) {
   try {
     const name = formData.get('name') as string;
     const description = formData.get('description') as string;
@@ -133,14 +131,13 @@ export async function updateProduct(formData: FormData, id: string) {
           product_image_url = ${product_image_url}
       WHERE id = ${id}
     `;
-
-    revalidatePath('/seller-dashboard');
-    redirect('/seller-dashboard');
-
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to update product data.');
   }
+  
+  revalidatePath("/seller-dashboard");
+  redirect("/seller-dashboard");
 }
 
 
