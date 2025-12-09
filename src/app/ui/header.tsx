@@ -5,7 +5,7 @@ import styles from '@/app/page.module.css';
 import Nav from "@/app/ui/nav";
 import { ebGaramond } from "@/app/ui/fonts";
 import Image from "next/image";
-import logo from "../../../public/handmade-basket-transparent-background.png";
+import logo from "../../../public/images/handmade-basket-transparent-background.png";
 
 type HeaderProps = {
     isLoggedIn: boolean;

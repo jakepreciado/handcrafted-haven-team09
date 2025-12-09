@@ -1,6 +1,6 @@
-import { ebGaramond, cormorantGaramond } from "./fonts";
+import { ebGaramond, cormorantGaramond } from "../fonts";
 import Image from "next/image";
-import styles from '../page.module.css'
+import styles from '../../page.module.css'
 
 type CardProps = {
     titleAndImgAlt: string;
@@ -23,7 +23,7 @@ export default function Card({
 }: CardProps) {
     return (
         <div className={styles.card}>
-            <h2 className={ebGaramond.className}>{titleAndImgAlt}</h2>
+            <h3 className={`${ebGaramond.className} card-header`}>{titleAndImgAlt}</h3>
             <Image
                 src={imgSrc}
                 alt={titleAndImgAlt}
@@ -31,9 +31,9 @@ export default function Card({
                 height={imgHeight}
                 loading="lazy"
             />
-            <p className={cormorantGaramond.className}>{description}</p>
-            <p className={cormorantGaramond.className}>{category}</p>
-            <button className={cormorantGaramond.className}>{buttonWordsPrice}</button>
+            <p className={`${cormorantGaramond.className} text-center`}>{description}</p>
+            <p className={`${cormorantGaramond.className} text-center`}>{category}</p>
+            <h2 className={`${cormorantGaramond.className} text-center`}>{buttonWordsPrice}</h2>
         </div>
     )
 }

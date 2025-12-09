@@ -3,10 +3,13 @@
 import { updateProduct } from "@/app/lib/actions";
 import { fetchProductById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
+import { fetchCategories } from "@/app/lib/data";
 
 export default async function EditProduct({ id }: { id: string }) {
   const product = await fetchProductById(id);
   if (!product) return notFound();
+
+  const categories = await fetchCategories();
 
   return (
     <>
@@ -58,20 +61,25 @@ export default async function EditProduct({ id }: { id: string }) {
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
             />
           </div>
+          {/* Category dropdown */}
           <div>
-            <label
-              htmlFor="category"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="category_id" className="block text-sm font-medium text-gray-700">
               Category
             </label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              defaultValue={product.category}
+            <select
+              id="category_id"
+              name="category_id"
+              defaultValue={product.category ?? ""}
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-            />
+              required
+            >
+              <option value="" disabled>Select a category</option>
+              {categories.map(cat => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label

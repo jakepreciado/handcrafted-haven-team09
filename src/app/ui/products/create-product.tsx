@@ -3,6 +3,7 @@
 import { createProduct } from "@/app/lib/actions";
 import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
+import { fetchCategories } from "@/app/lib/data";
 
 export default async function CreateProduct() {
     const session = await auth();
@@ -16,6 +17,8 @@ export default async function CreateProduct() {
     }
 
     const userId = user.id;
+
+    const categories = await fetchCategories();
 
     return (
         <>
@@ -58,17 +61,27 @@ export default async function CreateProduct() {
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         />
                     </div>
+                    {/* Category Dropdown */}
                     <div>
-                        <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="category_id" className="block text-sm font-medium text-gray-700">
                             Category
                         </label>
-                        <input
-                            type="text"
+                        <select
                             id="category"
-                            name="category"
+                            name="category_id"
                             required
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                        />
+                            defaultValue=""
+                        >
+                            <option value="" disabled>
+                                Select a category
+                            </option>
+                            {categories.map((cat) => (
+                                <option key={cat.id} value={cat.id}>
+                                    {cat.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div>
                         <label htmlFor="product_image_url" className="block text-sm font-medium text-gray-700">
