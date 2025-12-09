@@ -69,7 +69,6 @@
 
   .login {
     width: 6rem;
-    border: none;
   }
 
   .hambutton {
@@ -174,6 +173,8 @@
   border-radius: 10px;
   background-color: var(--color2-prairie-grass);
   text-align: center;
+  border: none;
+  font-weight: bold;
 }
 
 .login:hover {
