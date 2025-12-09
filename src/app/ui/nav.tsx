@@ -1,5 +1,6 @@
 import styles from "@/app/page.module.css";
 import { logout } from "@/app/lib/actions";
+import { cormorantGaramond } from "./fonts";
 
 type NavProps = {
     isLoggedIn: boolean;
@@ -15,7 +16,7 @@ export default function Nav({ isLoggedIn }: NavProps) {
 
             {isLoggedIn ? (
                 <form action={logout} className="inline">
-                    <button type="submit" className={styles.login}>
+                    <button type="submit" className={`${cormorantGaramond.className} ${styles.login}`}>
                         Logout
                     </button>
                 </form>
