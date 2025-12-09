@@ -3,15 +3,6 @@ import "../../globals.css";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/app/ui/products/breadcrumbs";
 import ProductDescription from "@/app/ui/products/product-description";
-// @components
-import {
-    Button,
-    Rating,
-    Typography,
-} from "@material-tailwind/react";
-
-// @icons
-import { HeartSolid } from "iconoir-react";
 
 export default async function ProductPage(props: { params: Promise<{ id: string }> }) {
     const params = await props.params;
@@ -34,6 +25,7 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
                     },
                 ]}
             />
+            
             <ProductDescription params={props.params} />
         </>
     );

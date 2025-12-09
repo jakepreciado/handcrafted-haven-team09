@@ -1,58 +1,36 @@
 import Link from "next/link";
+import { fetchCategories } from "@/app/lib/data"; // Make sure this returns an array of { id, name }
+import '@/app/globals.css';
 
-export default function SideNav() {
+export default async function SideNav() {
+  const categories = await fetchCategories();
+
   return (
-    <nav className="w-64 min-h-screen bg-gray-100 border-r border-gray-200 p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-6">
-        Categories
-      </h2>
+    <nav className="flex h-full flex-col px-3 py-4 md:px-2">
+      <div className="sidenav">
+        <h1 className="page-header text-xl font-semibold  mb-6">Categories</h1>
 
-      <ul className="space-y-3 text-gray-700">
-        <li>
-          <Link
-            href="/products"
-            className="block rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-700"
-          >
-            All Products
-          </Link>
-        </li>
+        <ul className="space-y-3 text-gray-700">
+          <li className="text-center">
+            <Link
+              href="/products"
+            >
+              All Products
+            </Link>
+          </li>
 
-        <li>
-          <Link
-            href="/products/category/electronics"
-            className="block rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-700"
-          >
-            Electronics
-          </Link>
-        </li>
-
-        <li>
-          <Link
-            href="/products/category/books"
-            className="block rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-700"
-          >
-            Books
-          </Link>
-        </li>
-
-        <li>
-          <Link
-            href="/products/category/clothing"
-            className="block rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-700"
-          >
-            Clothing
-          </Link>
-        </li>
-
-        <li>
-          <Link
-            href="/products/category/home"
-            className="block rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-700"
-          >
-            Home
-          </Link>
-        </li>
-      </ul>
+          {categories.map((category) => (
+            <li key={category.id}>
+              <Link
+                href={`/products/category/${category.id}`}
+                className="block rounded-md px-3 py-2 hover:bg-blue-100 hover:text-blue-700"
+              >
+                {category.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }
