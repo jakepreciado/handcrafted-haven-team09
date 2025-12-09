@@ -135,11 +135,42 @@ export async function updateProduct(id: string, formData: FormData,) {
     console.error('Database Error:', error);
     throw new Error('Failed to update product data.');
   }
-  
+
   revalidatePath("/seller-dashboard");
   redirect("/seller-dashboard");
 }
 
+
+
+export async function createReview(formData: FormData): Promise<void> {
+  const productId = formData.get("productId")?.toString();
+  const name = formData.get("name")?.toString();
+  const ratingStr = formData.get("rating")?.toString();
+  const comment = formData.get("comment")?.toString();
+
+  if (!productId || !name || !ratingStr || !comment) {
+    throw new Error("Missing fields: productId, name, rating, and comment are required.");
+  }
+
+  const rating = Number(ratingStr);
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    throw new Error("Rating must be an integer between 1 and 5.");
+  }
+
+  try {
+    await sql`
+      INSERT INTO reviews (product_id, rating, comment, reviewer_name)
+      VALUES (${productId}::uuid, ${rating}::int, ${comment}, ${name})
+    `;
+
+  } catch (err) {
+    console.error("Database Error:", err);
+    throw new Error("Failed to create review.");
+  }
+
+  revalidatePath(`/products/${productId}`);
+  redirect(`/products/${productId}`);
+}
 
 
 
