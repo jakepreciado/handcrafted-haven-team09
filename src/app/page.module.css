@@ -68,11 +68,8 @@
   }
 
   .login {
-    width: 4rem;
-  }
-
-  .nav .login {
-    padding-left: 0.7rem;
+    width: 6rem;
+    border: none;
   }
 
   .hambutton {
@@ -176,6 +173,7 @@
   padding: .5rem 1rem;
   border-radius: 10px;
   background-color: var(--color2-prairie-grass);
+  text-align: center;
 }
 
 .login:hover {
@@ -185,7 +183,7 @@
 .main {
   width: 100%;
   margin: 0 auto;
-  padding: 1rem 0 0 0;
+  padding: 1rem .5rem .5rem .5rem;
   min-height: 82.5vh;
   justify-content: space-between;
   background-color: var(--color6-wheat);
