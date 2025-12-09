@@ -2,6 +2,7 @@ import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut, auth } from '../../../auth';
 import { fetchProductsByUser } from '@/app/lib/data';
 import { CreateProduct, DeleteProduct, UpdateProduct } from '@/app/ui/products/buttons';
+import Card from '../ui/cards/card';
 
 export default async function Page() {
   // Get the logged-in user's session
@@ -13,8 +14,7 @@ export default async function Page() {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4">Seller Dashboard</h1>
-      <p>You are logged in as {session?.user?.name}.</p>
+      <h1 className="page-header text-2xl font-bold mb-4">Welcome Back, {session?.user?.name}!</h1>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
         <form
@@ -32,21 +32,22 @@ export default async function Page() {
       </div>
       <section className="mt-8">
         <h2 className="text-xl font-semibold mb-4">Your Products</h2>
-        {products.length === 0 ? (
-          <p>No products yet.</p>
-        ) : (
-          <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <li key={product.id} className="rounded-md border p-4 shadow-sm">
-                <h3 className="font-bold text-lg">{product.name}</h3>
-                <p>{product.description}</p>
-                <p className="font-medium mt-2">${product.price}</p>
-                <DeleteProduct id={product.id} />
-                <UpdateProduct id={product.id} />
-              </li>
-            ))}
-          </ul>
-        )}
+        {products.map((product) => (
+          <div key={product.id} className="mb-4 flex items-center justify-between">
+            <Card
+              titleAndImgAlt={product.name}
+              imgSrc={product.product_image_url}
+              imgWidth={250}
+              imgHeight={250}
+              description={product.description}
+              category={product.category}
+              buttonWordsPrice={`$${product.price}`}
+            />
+            <UpdateProduct id={product.id} />
+            <DeleteProduct id={product.id} />
+          </div>
+        ))}
+
       </section>
     </>
   );

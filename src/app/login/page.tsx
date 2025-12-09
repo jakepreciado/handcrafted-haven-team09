@@ -1,7 +1,7 @@
 import LoginForm from '@/app/ui/login-form';
 import { Suspense } from 'react';
 import Image from 'next/image';
-import loginHeroImage from "../../../public/handcrafted-login-hero-image.jpg"
+import loginHeroImage from "../../../public/images/handcrafted-login-hero-image.jpg"
 
 export default function LoginPage() {
   return (

@@ -1,4 +1,6 @@
 export type Review = {
+    id: string;
+    reviewer_name: string;
     rating: number;
     comment: string;
 };
@@ -26,4 +28,13 @@ export type User = {
 export type Category = {
     id: string;
     name: string;
+};
+
+export type CreateUserInput = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string; // already hashed
+  store_name?: string;
+  profile_image_url?: string;
 };

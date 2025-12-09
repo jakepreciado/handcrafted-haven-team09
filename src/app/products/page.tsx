@@ -1,26 +1,25 @@
 import { fetchProducts } from "@/app/lib/data";
 import { Product } from "@/app/lib/definitions";
-import Card from "@/app/ui/card";
+import SideNav from "../ui/products/sidenav";
+import Card from "@/app/ui/cards/card";
+import Link from "next/link";
+import SortButtons from "@/app/ui/products/sort-buttons";
+import '@/app/globals.css';
 
 export default async function Page() {
-  const products: Product[] = await fetchProducts();
+  const products = await fetchProducts();
 
   return (
-    <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-        {products.map((product) => (
-          <Card
-            key={product.id}
-            titleAndImgAlt={product.name}
-            imgSrc={product.product_image_url}
-            imgWidth={250}
-            imgHeight={375}
-            description={product.description}
-            category={product.category}
-            buttonWordsPrice={`$${product.price}`}
-          />
-        ))}
-      </div>
-    </>
+    <main className="bg-white dark:bg-gray-900 py-10">
+      <div className="max-w-[1400px] mx-auto flex gap-10 px-4">
+        <SideNav />
+        <section className="flex-1 w-full">
+          <h1 className="page-header text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+            Products
+          </h1>
+          <SortButtons initialProducts={products} />
+        </section>
+      </div >
+    </main >
   );
 }
