@@ -13,8 +13,8 @@ export default async function Page() {
             key={product.id}
             titleAndImgAlt={product.name}
             imgSrc={product.product_image_url}
-            imgWidth={300}
-            imgHeight={300}
+            imgWidth={250}
+            imgHeight={375}
             description={product.description}
             category={product.category}
             buttonWordsPrice={`$${product.price}`}
