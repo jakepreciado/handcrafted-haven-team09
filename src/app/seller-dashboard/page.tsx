@@ -35,7 +35,6 @@ export default async function Page() {
               buttonWordsPrice={`$${product.price}`}
               id={product.id}
             />
-
           </div>
         ))}
 
