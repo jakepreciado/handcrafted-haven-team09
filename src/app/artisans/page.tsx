@@ -10,9 +10,9 @@ export default async function Page() {
     }
     return (
         <div className="p-6 max-w-4xl mx-auto">
-            <h1 className="text-2xl font-bold mb-6">Artisans</h1>
+            <h1 className="page-header text-2xl font-bold mb-6">Artisans</h1>
 
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="card-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {users.map((user) => (
                     <StoreCard
                         key={user.id}
@@ -20,6 +20,7 @@ export default async function Page() {
                         storeName={user.store_name}
                         firstName={user.first_name}
                         lastName={user.last_name}
+                        profileImageUrl={user.profile_image_url}
                     />
                 ))}
             </div>

@@ -3,6 +3,7 @@
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { deleteProduct } from '@/app/lib/actions';
+import '@/app/globals.css';
 
 export function CreateProduct() {
   return (
@@ -12,7 +13,7 @@ export function CreateProduct() {
     >
       <button>
         <PlusIcon className="w-6" />
-        <div className="md:block">Create</div>
+        <div className="md:block create-button">Add Product</div>
       </button>
     </Link>
   );
@@ -22,12 +23,9 @@ export function UpdateProduct({ id }: { id: string }) {
   return (
     <Link
       href={`/products/${id}/edit`}
-      className="rounded-md border p-2 hover:bg-gray-100"
+      className="rounded-md  hover:bg-gray-100"
     >
-      <button>
-        <PencilIcon />
-        <span>Update</span>
-      </button>
+      <button className='seller-card-button'><PencilIcon className='edit-icon' /></button>
 
     </Link >
   );
@@ -38,8 +36,7 @@ export function DeleteProduct({ id }: { id: string }) {
   return (
     <form action={deleteProductWithId}>
       <button>
-        <TrashIcon />
-        <div className="md:block">Delete</div>
+        <TrashIcon className='seller-card-button' />
       </button>
     </form>
   );

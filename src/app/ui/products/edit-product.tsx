@@ -4,6 +4,7 @@ import { updateProduct } from "@/app/lib/actions";
 import { fetchProductById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 import { fetchCategories } from "@/app/lib/data";
+import '@/app/globals.css';
 
 export default async function EditProduct({ id }: { id: string }) {
   const product = await fetchProductById(id);
@@ -14,8 +15,8 @@ export default async function EditProduct({ id }: { id: string }) {
   return (
     <>
       <div className="p-6 max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6">Edit Product</h1>
-        <form action={updateProduct.bind(null, id)} className="space-y-4">
+        <h1 className="page-header text-2xl font-bold mb-6">Edit Product</h1>
+        <form action={updateProduct.bind(null, id)} className="form dark-text space-y-4">
           <div>
             <label
               htmlFor="name"
