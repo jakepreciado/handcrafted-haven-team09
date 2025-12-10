@@ -17,7 +17,7 @@ import { ebGaramond, cormorantGaramond } from "@/app/ui/fonts";
 
 export default function SignupForm() {
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get('callbackUrl') || '/seller-dashboard';
+    const callbackUrl = searchParams.get('callbackUrl') || '/login';
     const [errorMessage, formAction, isPending] = useActionState(register, undefined);
 
     return (
@@ -118,7 +118,7 @@ export default function SignupForm() {
                 </div>
 
                 {/* Hidden Redirect */}
-                <input type="hidden" name="redirectTo" value={callbackUrl} />
+                <input type="hidden" name="redirectTo" value="/login" />
 
                 {/* Submit Button */}
                 <button
@@ -128,12 +128,8 @@ export default function SignupForm() {
                     Create account <ArrowRightIcon className={styles.loginArrow} />
                 </button>
 
-                {/* Error Message */}
-                {errorMessage && (
-                    <div className="flex mt-3 items-center space-x-2 text-red-500">
-                        <p className="text-sm">{errorMessage}</p>
-                    </div>
-                )}
+
+
             </div>
         </form>
     );
